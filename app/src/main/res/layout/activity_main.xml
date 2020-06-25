@@ -11,7 +11,7 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="196dp"
+        android:layout_width="208dp"
         android:layout_height="144dp"
         android:text="+20 облачно"
         android:textSize="50dp" />
@@ -25,6 +25,7 @@
     <TextView
         android:id="@+id/textView4"
         android:layout_width="match_parent"
-        android:layout_height="275dp"
-        android:text="TextView" />
+        android:layout_height="325dp"
+        android:text="Изображение, иллюстрирующее погоду"
+        android:textSize="55dp" />
 </LinearLayout>
