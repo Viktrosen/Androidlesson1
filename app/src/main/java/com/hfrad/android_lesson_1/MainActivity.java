@@ -1,9 +1,13 @@
 package com.hfrad.android_lesson_1;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,10 +26,41 @@ public class MainActivity extends AppCompatActivity {
         }
         Toast.makeText(getApplicationContext(), instanceState + " - onCreate()", Toast.LENGTH_SHORT).show();
         Log.d("INFO","onCreate()");
-        final TextView textTemperature = findViewById(R.id.textTemperature); // Текст
-        final MainPresenter presenter = MainPresenter.getInstance();
-        // Получить презентер
-        textTemperature.setText((presenter.getTemperature()));
+        Button changeActivity = findViewById(R.id.button);
+        Button goToBrowser = findViewById(R.id.button3);
+        changeActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, ChoseActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        final TextView textView = findViewById(R.id.textView3);
+        TextView textView1 = findViewById(R.id.textTemperature);
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        if (bundle == null) {
+            return;
+        }
+        String city  = bundle.getString("City"); // получить данные из Intent
+        String temperature = bundle.getString("Temperature");
+        textView.setText(city);
+        textView1.setText(temperature);
+
+        goToBrowser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String url = "https://ru.wikipedia.org/wiki/"+textView.getText();
+                        Uri uri = Uri.parse(url);
+                Intent browser = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(browser);
+
+            }
+        });
+
+
     }
 
     @Override
@@ -41,9 +76,8 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "Повторный запуск!! - onRestoreInstanceState()", Toast.LENGTH_SHORT).show();
         Log.d("INFO","onRestoreInstanceState()");
         String temperature = saveInstanceState.getString("temperature");
-        String textViewText= saveInstanceState.getString("temperature");
         TextView txView = findViewById(R.id.textTemperature);
-        txView.setText(textViewText);
+        txView.setText(temperature);
     }
 
     @Override
