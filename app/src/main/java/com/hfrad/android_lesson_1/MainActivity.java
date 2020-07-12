@@ -3,8 +3,13 @@ package com.hfrad.android_lesson_1;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -13,10 +18,27 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        String[] data = getResources().getStringArray(R.array.weekdays);
+        TextView day = findViewById(R.id.textView2);
+        day.setText(data[0]);
+
+        for (int i = 0; i < data.length-1; i++) {
+            data[i]=data[i+1];
+        }
+
+        for (int i = 0; i < data.length; i++) {
+            data[i] = data[i]+"  +"+Integer.toString((int)(Math.random()*20));
+        }
+
+
+        initRecyclerView(data);
+
         String instanceState;
         if (savedInstanceState == null){
             instanceState = "Первый запуск!";
@@ -129,6 +151,27 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "onDestroy()", Toast.LENGTH_SHORT).show();
         Log.d("INFO","onDestroy()");
     }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    private void initRecyclerView(String[] data){
+        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+        DividerItemDecoration itemDecoration = new DividerItemDecoration(this,  LinearLayoutManager.VERTICAL);
+        itemDecoration.setDrawable(getDrawable(R.drawable.separator));
+        recyclerView.addItemDecoration(itemDecoration);
+
+
+        // Эта установка служит для повышения производительности системы
+        recyclerView.setHasFixedSize(true);
+
+        // Будем работать со встроенным менеджером
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+        // Установим адаптер
+        SocnetAdapter adapter = new SocnetAdapter(data);
+        recyclerView.setAdapter(adapter);
+    }
+
 
 }
 

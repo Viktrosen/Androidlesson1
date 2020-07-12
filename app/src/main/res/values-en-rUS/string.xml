@@ -16,5 +16,14 @@
     <string name="settings">Settings</string>
     <string name="back">Back</string>
     <string name="info">Info</string>
+    <string-array name="weekdays">
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+    </string-array>
 
 </resources>
