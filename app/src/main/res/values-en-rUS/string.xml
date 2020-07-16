@@ -25,5 +25,6 @@
         <item>Saturday</item>
         <item>Sunday</item>
     </string-array>
+    <string name="entercity">City</string>
 
 </resources>

@@ -21,7 +21,13 @@ public class MainActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        if (bundle!= null && bundle.getInt("DarkTheme")!=0){
+            setTheme(R.style.AppDarkTheme);
+        }
         super.onCreate(savedInstanceState);
+        setTheme(R.style.AppDarkTheme);
         setContentView(R.layout.activity_main);
 
         String[] data = getResources().getStringArray(R.array.weekdays);
@@ -61,11 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
         final TextView textView = findViewById(R.id.textView3);
         TextView textView1 = findViewById(R.id.textTemperature);
-        Intent intent = getIntent();
-        Bundle bundle = intent.getExtras();
-        if (bundle == null) {
-            return;
-        }
+
         String city  = bundle.getString("City"); // получить данные из Intent
         String temperature = bundle.getString("Temperature");
         textView.setText(city);
