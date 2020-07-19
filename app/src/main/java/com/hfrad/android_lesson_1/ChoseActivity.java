@@ -28,20 +28,22 @@ public class ChoseActivity extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view,"Хотите покинуть настройки?",Snackbar.LENGTH_LONG).setAction("Да", new View.OnClickListener() {
+                Snackbar.make(view, "Хотите покинуть настройки?", Snackbar.LENGTH_LONG).setAction("Да", new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        int temperature = (int)(Math.random()*20);
+                        int temperature = (int) (Math.random() * 20);
                         Spinner spinner = findViewById(R.id.spinner2);
                         TextInputEditText cityInput = findViewById(R.id.enterCity);
 
                         String city = "";
-                        if (String.valueOf(cityInput.getText()).equals("")){
-                            city = String.valueOf(spinner.getSelectedItem());}
-                        else {city = String.valueOf(cityInput.getText());}
-                        Intent intent = new Intent(ChoseActivity.this,MainActivity.class);
-                        intent.putExtra("City",city);
-                        intent.putExtra("Temperature","+"+Integer.toString(temperature));
+                        if (String.valueOf(cityInput.getText()).equals("")) {
+                            city = String.valueOf(spinner.getSelectedItem());
+                        } else {
+                            city = String.valueOf(cityInput.getText());
+                        }
+                        Intent intent = new Intent(ChoseActivity.this, MainActivity.class);
+                        intent.putExtra("City", city);
+                        intent.putExtra("Temperature", "+" + Integer.toString(temperature));
                         startActivity(intent);
                         finish();
                     }
@@ -52,7 +54,7 @@ public class ChoseActivity extends AppCompatActivity {
         darkTheme.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ChoseActivity.this,DarkTheme.class);
+                Intent intent = new Intent(ChoseActivity.this, DarkTheme.class);
                 startActivity(intent);
             }
         });
