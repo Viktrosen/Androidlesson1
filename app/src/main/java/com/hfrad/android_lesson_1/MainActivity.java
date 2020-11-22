@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
                         Uri uri = Uri.parse(url);
                 Intent browser = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(browser);
-
             }
         });
 
@@ -103,9 +102,11 @@ public class MainActivity extends AppCompatActivity {
         super.onSaveInstanceState(saveInstanceState);
         Toast.makeText(getApplicationContext(), "onSaveInstanceState()", Toast.LENGTH_SHORT).show();
         Log.d("INFO","onSaveInstanceState()");
-        saveInstanceState.putString("temperature", "+21");
+        if (saveInstanceState!=null){
+        saveInstanceState.putString("temperature", "+21");}
+        else {
         TextView txView = findViewById(R.id.textTemperature);
-        saveInstanceState.putString("temperature", txView.getText().toString());
+        saveInstanceState.putString("temperature", txView.getText().toString());}
     }
 
     @Override
