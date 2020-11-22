@@ -1,15 +1,18 @@
 <resources>
     <string name="app_name">Android-lesson-1</string>
-    <string name = "temperature">+20</string>
-    <string name = "cloud">Облачно</string>
-    <string name = "city">Пермь</string>
+    <string name="temperature">+20</string>
+    <string name="cloud">Облачно</string>
+    <string name="city">Пермь</string>
     <string-array name="cities">
         <item>Пермь</item>
         <item>Москва</item>
         <item>Санкт-Петербург</item>
-        </string-array>
+    </string-array>
     <string name="image">Изображение иллюстрирующее погоду</string>
     <string name="settingwind">Скорость ветра</string>
-    <string name= "pressure">Давление</string>
+    <string name="pressure">Давление</string>
     <string name="DarkTheme">Тёмная тема</string>
+    <string name="settings">Настройки</string>
+    <string name="back">Назад</string>
+    <string name="info">Доп.информация</string>
 </resources>
