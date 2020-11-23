@@ -43,7 +43,6 @@ public class ChoseActivity extends AppCompatActivity {
                         }
                         Intent intent = new Intent(ChoseActivity.this, MainActivity.class);
                         intent.putExtra("City", city);
-                        intent.putExtra("Temperature", "+" + Integer.toString(temperature));
                         startActivity(intent);
                         finish();
                     }

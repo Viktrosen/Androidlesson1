@@ -37,8 +37,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTheme(R.style.AppDarkTheme);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main2);
         init();
+
     }
 
     private void init() {
@@ -85,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 final URL uri;
                 String city = bundle.getString("City");
-                if (city!=null) {
+                if (city != null) {
                     uri = new URL("https://api.openweathermap.org/data/2.5/weather?q=" + city + ",RU&appid=" + WEATHER_API_KEY);
                 } else {
                     uri = new URL(WEATHER_URL + WEATHER_API_KEY);
